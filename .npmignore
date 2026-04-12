@@ -7,4 +7,5 @@ publish.ps1
 .vscode/
 # 排除 GitHub 相关目录
 .github/
+package-lock.json
 维护.md
