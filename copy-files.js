@@ -1,12 +1,20 @@
-const fs = require('fs'), path = require('path'),
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-    // 要复制的文件位置和文件目标位置
-    packageDir = __dirname, targetDir = path.resolve(packageDir, '../..'), fileName = 'sevWin.js',
+// 要复制的文件位置和文件目标位置
+const __filename = fileURLToPath(import.meta.url), __dirname = path.dirname(__filename),
+    fileName = 'sevWin.js', targetDir = path.resolve(__dirname, '../..'),
 
     // 要拷贝的文件和目标文件路径
-    sourceFile = path.join(packageDir, fileName), targetFile = path.join(targetDir, fileName);
+    sourceFile = path.join(__dirname, fileName), targetFile = path.join(targetDir, fileName);
 
-function copyFile() {
+/**
+ * 复制文件到项目根目录
+ * >查看定义:@see {@link copyFile}
+ * @returns {boolean} - 复制是否成功
+ */
+const copyFile = () => {
     console.log(`🔍 检查 ${fileName} 文件...`), console.log(`📁 项目根目录:${targetDir}`);
     try {
         if (fs.existsSync(targetFile)) return true;  // 如果目标文件存在,则返回true并结束函数
@@ -22,5 +30,5 @@ function copyFile() {
 }
 
 // 执行脚本并导出函数
-if (require.main === module) copyFile();
-module.exports = { copyFile };
+if (process.argv[1] === __filename) copyFile();
+export { copyFile };

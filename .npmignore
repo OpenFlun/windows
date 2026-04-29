@@ -1,6 +1,7 @@
 # 忽略版本控制
 .git/
 .gitignore
+node_modules/
 publish.ps1
 
 # 忽略IDE文件

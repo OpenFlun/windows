@@ -2,7 +2,6 @@
   "name": "flun-windows",
   "version": "1.0.7",
   "description": "支持 Windows 服务、事件日志、UAC 以及多种与操作系统交互的辅助方法",
-  "types": "index.d.ts",
   "keywords": [
     "ngn",
     "windows",
@@ -13,19 +12,23 @@
     "event logging",
     "elevate",
     "sudo",
-    "task",
-    "flun"
+    "task"
   ],
   "author": "flun <cn@flun.top>",
-  "main": "flun-windows.js",
+  "type": "module",
+  "types": "index.d.ts",
+  "exports": {
+    ".": "./index.js"
+  },
   "scripts": {
     "postinstall": "node copy-files.js 2>&1"
   },
+  "main": "index.js",
   "files": [
     "lib",
     "bin",
     "index.d.ts",
-    "flun-windows.js",
+    "index.js",
     "sevWin.js",
     "copy-files.js",
     "README.md",
@@ -37,7 +40,10 @@
     "xml": "1.0.1",
     "yargs": "^18.0.0"
   },
-  "readmeFilename": "README.md",
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/flunGit/flun-windows.git"
@@ -46,9 +52,5 @@
   "bugs": {
     "url": "https://github.com/flunGit/flun-windows/issues"
   },
-  "license": "ISC",
-  "engines": {
-    "node": ">=20.0.0",
-    "npm": ">=9.0.0"
-  }
+  "license": "ISC"
 }
