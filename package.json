@@ -1,9 +1,8 @@
 {
-  "name": "flun-windows",
+  "name": "@flun/windows",
   "version": "2.0.1",
   "description": "支持 Windows 服务、事件日志、UAC 以及多种与操作系统交互的辅助方法",
   "keywords": [
-    "ngn",
     "windows",
     "service",
     "daemon",
@@ -15,6 +14,9 @@
     "task"
   ],
   "author": "flun <cn@flun.top>",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "types": "index.d.ts",
   "exports": {
@@ -46,11 +48,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flunGit/flun-windows.git"
+    "url": "git+https://github.com/flunGit/windows.git"
   },
-  "homepage": "https://www.npmjs.com/package/flun-windows#readme",
+  "homepage": "https://www.npmjs.com/package/@flun/windows#readme",
   "bugs": {
-    "url": "https://github.com/flunGit/flun-windows/issues"
+    "url": "https://github.com/flunGit/windows/issues"
   },
   "license": "ISC"
 }

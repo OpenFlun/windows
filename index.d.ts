@@ -109,7 +109,7 @@ declare module './lib/winsw.js' {
  * >查看定义:@see {@link Service}、{@link EventLogger}、{@link elevate}、{@link sudo}、{@link isAdminUser}、{@link kill}、{@link list}
  * @example
  *  // 基础示例
- *  import { Service } from 'flun-windows';
+ *  import { Service } from '@flun/windows';
  *
  *  // 创建服务对象
  *  const svc = new Service({

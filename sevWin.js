@@ -1,4 +1,4 @@
-import { Service } from 'flun-windows'; // 可选参数(EventLogger,elevate, sudo, isAdminUser, kill, list)
+import { Service } from '@flun/windows'; // 可选参数(EventLogger,elevate, sudo, isAdminUser, kill, list)
 
 const serviceName = 'TestApp', scriptPath = 'D:\\test\\dev.js', // 请根据实际路径修改
 	svc = new Service({

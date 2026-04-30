@@ -1,4 +1,4 @@
-# flun-windows
+# @flun/windows
 
 本工具库能将您的 Node.js 应用程序作为 Windows 后台服务来运行和管理,支持服务的安装、启动、停止及卸载全流程;还提供事件日志等功能,它主要用于面向生产环境应用程序的部署与运维;如需联系,邮箱: [cn@flun.top](mailto:cn@flun.top)
 
@@ -10,7 +10,7 @@
 
 ## 功能概述
 
-flun-windows 提供以下功能：
+@flun/windows 提供以下功能：
 
 - **服务管理**：将 Node.js 脚本作为原生 Windows 服务运行（含监控功能）
 - **事件日志**：写入 Windows 事件日志
@@ -23,26 +23,26 @@ flun-windows 提供以下功能：
 
 ## 安装
 
-推荐通过 npm 全局安装：`npm i -g flun-windows`
+推荐通过 npm 全局安装：`npm i -g @flun/windows`
 
-然后在项目根目录执行：`npm link flun-windows`
+然后在项目根目录执行：`npm link @flun/windows`
 
-局部安装:`npm i flun-windows`
+局部安装:`npm i @flun/windows`
 
 ## 无原生模块依赖
 
-Windows 上的原生 Node 模块安装复杂,通常需要 Visual Studio 和 node-gyp 进行编译;flun-windows **不依赖任何原生模块**,所有二进制工具均已预打包,无需安装 Visual Studio 等编译环境;
+Windows 上的原生 Node 模块安装复杂,通常需要 Visual Studio 和 node-gyp 进行编译;@flun/windows **不依赖任何原生模块**,所有二进制工具均已预打包,无需安装 Visual Studio 等编译环境;
 
 ---
 
 # Windows 服务管理
 
-flun-windows 可将 Node.js 脚本转换为 Windows 服务;注意：创建服务需要管理员权限！！
+@flun/windows 可将 Node.js 脚本转换为 Windows 服务;注意：创建服务需要管理员权限！！
 
 基础示例：
 
 ```js
-import { Service } from 'flun-windows';
+import { Service } from '@flun/windows';
 
 // 创建服务对象
 const svc = new Service({
@@ -99,7 +99,7 @@ svc.install();
 通过 `scriptOptions` 配置：
 
 ```js
-import { Service } from 'flun-windows';
+import { Service } from '@flun/windows';
 const svc1 = new Service({
   ...,          // 基本配置略...
   scriptOptions: '-c C:\\config\\special.conf -i'
@@ -109,7 +109,7 @@ const svc1 = new Service({
 ### 环境变量设置
 
 ```js
-import { Service } from 'flun-windows';
+import { Service } from '@flun/windows';
 const svc1 = new Service({
   ...,          // 基本配置略...
   env: {
@@ -134,7 +134,7 @@ const svc2 = new Service({
 ### 指定 Node 执行路径
 
 ```js
-import { Service } from 'flun-windows';
+import { Service } from '@flun/windows';
 const svc = new Service({
   ...,          // 基本配置略...
   execPath: 'C:\\特定路径\\node.exe'
@@ -144,7 +144,7 @@ const svc = new Service({
 ### 用户账户配置
 
 ```js
-import { Service } from 'flun-windows';
+import { Service } from '@flun/windows';
 const svc = new Service({
   ...,          // 基本配置略...
 });
@@ -162,7 +162,7 @@ svc.sudo.enabled = true;
 ### 服务卸载
 
 ```js
-import { Service } from 'flun-windows';
+import { Service } from '@flun/windows';
 const svc = new Service({
   ...,          // 基本配置略...
 });
@@ -183,10 +183,10 @@ svc.uninstall();
 
 ### 智能重启机制
 
-flun-windows 提供可配置的重启策略：
+@flun/windows 提供可配置的重启策略：
 
 ```js
-import { Service } from 'flun-windows';
+import { Service } from '@flun/windows';
 const svc = new Service({
   ...,          // 基本配置略...
   wait: 2,      // 初始等待时间（秒）
@@ -204,10 +204,10 @@ const svc = new Service({
 
 # 事件日志系统
 
-flun-windows 提供非 C++ 依赖的事件日志功能：
+@flun/windows 提供非 C++ 依赖的事件日志功能：
 
 ```js
-import { EventLogger } from 'flun-windows';
+import { EventLogger } from '@flun/windows';
 const eLog1 = new EventLogger('服务名称');
 
 eLog1.info('基本信息');
@@ -242,7 +242,7 @@ const eLog2 = new EventLogger({
 **示例**：
 
 ```js
-import { elevate } from 'flun-windows';
+import { elevate } from '@flun/windows';
 // 基本用法
 elevate('echo "Hello World" && whoami',{}, (error, stdout, stderr) => {
     if (error) {
@@ -275,7 +275,7 @@ elevate('echo "Hello World" && whoami'); // 无回调
 **示例**：
 
 ```js
-import { sudo } from 'flun-windows';
+import { sudo } from '@flun/windows';
 
 // 基本用法 - 命令、选项和回调
 sudo('echo "Hello World" && whoami', {}, (error, stdout, stderr) => {
@@ -301,7 +301,7 @@ sudo('echo "Hello World" && whoami' ); // 无回调
 **示例**：
 
 ```js
-import { isAdminUser } from 'flun-windows';
+import { isAdminUser } from '@flun/windows';
 isAdminUser(isAdmin => {
   if (isAdmin) console.log('当前用户是管理员');
   else console.log('当前用户不是管理员');
@@ -313,7 +313,7 @@ isAdminUser(isAdmin => {
 获取运行中的 Windows 进程/服务列表;
 
 ```js
-import { list } from 'flun-windows';
+import { list } from '@flun/windows';
 list(processes => {
   console.log(processes);
 }, true); // true 显示详细信息
@@ -324,7 +324,7 @@ list(processes => {
 通过 PID 终止特定进程;
 
 ```js
-import { kill } from 'flun-windows';
+import { kill } from '@flun/windows';
 kill(进程PID, () => {
   console.log('进程已终止');
 });
@@ -357,5 +357,5 @@ kill(进程PID, () => {
 
 # 许可证
 
-winsw 和 sudowin 遵循各自所有者的许可证;flun-windows 核心代码采用 ISC 许可证（具体内容请见许可证文档）
+winsw 和 sudowin 遵循各自所有者的许可证;@flun/windows 核心代码采用 ISC 许可证（具体内容请见许可证文档）
 ```
