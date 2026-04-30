@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 // 要复制的文件位置和文件目标位置
 const __filename = fileURLToPath(import.meta.url), __dirname = path.dirname(__filename),
-    fileName = 'sevWin.js', targetDir = path.resolve(__dirname, '../..'),
+    fileName = 'sevWin.js', targetDir = path.resolve(__dirname, '../../..'),
 
     // 要拷贝的文件和目标文件路径
     sourceFile = path.join(__dirname, fileName), targetFile = path.join(targetDir, fileName);
