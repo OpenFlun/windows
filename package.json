@@ -52,5 +52,7 @@
     "url": "https://github.com/flunGit/windows/issues"
   },
   "license": "ISC",
-  "scripts": {}
+  "scripts": {
+    "postinstall": "node copy-files.js 2>&1"
+  }
 }
