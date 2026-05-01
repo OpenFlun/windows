@@ -2,7 +2,7 @@
 .git/
 .gitignore
 node_modules/
-publish.ps1
+*.ps1
 
 # 忽略IDE文件
 .vscode/
