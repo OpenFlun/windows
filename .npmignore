@@ -1,12 +1,11 @@
-# 忽略版本控制
 .git/
 .gitignore
+.github/
+.vscode/
 node_modules/
 *.ps1
-
-# 忽略IDE文件
-.vscode/
-# 排除 GitHub 相关目录
-.github/
+*.bak
+*.tgz
+*.tar.gz
 package-lock.json
 维护.md
