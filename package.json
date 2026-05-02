@@ -1,6 +1,6 @@
 {
   "name": "@flun/windows",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "支持 Windows 服务、事件日志、UAC 以及多种与操作系统交互的辅助方法",
   "keywords": [
     "windows",
@@ -52,7 +52,5 @@
     "url": "https://github.com/flunGit/windows/issues"
   },
   "license": "ISC",
-  "scripts": {
-    "postinstall": "node copy-files.js 2>&1"
-  }
+  "scripts": {}
 }
