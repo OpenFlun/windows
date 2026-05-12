@@ -45,11 +45,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flunGit/windows.git"
+    "url": "git+https://github.com/OpenFlun/windows.git"
   },
   "homepage": "https://www.npmjs.com/package/@flun/windows#readme",
   "bugs": {
-    "url": "https://github.com/flunGit/windows/issues"
+    "url": "https://github.com/OpenFlun/windows/issues"
   },
   "license": "ISC",
   "scripts": {
