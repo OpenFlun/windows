@@ -1,6 +1,7 @@
 .git/
 .gitignore
 .github/
+.vs/
 .vscode/
 node_modules/
 *.ps1
