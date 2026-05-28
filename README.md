@@ -66,7 +66,6 @@ const svc = new Service({
   //, logmode: 'rotate'            // 日志模式（'reset', 'roll', 'append'）
   //, execPath: process.execPath   // Node.js可执行文件路径（默认当前Node）
   //, logOnAs: {}                  // 服务运行的用户凭据（'domain'、'account'、'password'和'mungeCredentialsAfterInstall'）
-  //, sudo: {enabled:false}        // 提升权限配置（是否在Windows启用了sudo,默认没有）
   //, env: undefined               // 环境变量（默认:undefined）
   //, logging: null                // 日志配置（默认:mode = 'append', pattern = 'yyyMMdd', sizeThreshold = 10240, keepFiles = 8）
   //, allowServiceLogon: undefined // 允许服务登录（默认undefined）
@@ -108,26 +107,28 @@ const svc1 = new Service({
 
 ### 环境变量设置
 
+`@flun/windows` 会自动向服务进程注入 `USERPROFILE` 环境变量,其值为**安装服务时当前登录用户的主目录**（例如 `C:\Users\你的用户名`;
+这确保了服务中调用 `os.homedir()` 能返回正确的用户目录,即使服务以 `LocalSystem` 等系统账户运;
+
+**你通常不需要手动设置 `USERPROFILE`**,如需添加其他自定义环境变量,可按以下方式：
+
 ```js
 import { Service } from '@flun/windows';
-const svc1 = new Service({
-  ...,          // 基本配置略...
+const svc = new Service({
+  name: 'My Service',
+  script: 'C:\\app\\server.js',
   env: {
-    name: "HOME",
-    value: process.env["USERPROFILE"]
+    MY_CUSTOM_VAR: 'some value',
+    ANOTHER_VAR: 'hello'
   }
 });
-
-// 或多个变量
+// 也支持数组形式
 const svc2 = new Service({
-  ...,          // 基本配置略...
-  env: [{
-    name: "HOME",
-    value: process.env["USERPROFILE"]
-  },{
-    name: "TEMP",
-    value: path.join(process.env["USERPROFILE"],"/temp")
-  }]
+  ...,
+  env: [
+    { name: 'VAR1', value: 'value1' },
+    { name: 'VAR2', value: 'value2' }
+  ]
 });
 ```
 
@@ -154,10 +155,8 @@ svc.logOnAs.domain = 'mydomain.local';
 svc.logOnAs.account = 'username';
 svc.logOnAs.password = 'password';
 svc.logOnAs.mungeCredentialsAfterInstall: true // 默认
-
-// 显示启用 sudo 提权 (注意!!需要在系统中启用了sudo,然后在这里设置为true,才有效)
-svc.sudo.enabled = true;
 ```
+> 💡 **提示**：即使你使用默认的 `LocalSystem` 账户运行服务,`@flun/windows` 也会通过自动注入 `USERPROFILE` 环境变量,使你的应用能够正确获取当前登录用户的目录（例如读取用户目录下的配置文件）;因此,你不需要为了修正 `os.homedir()` 而特意配置 `logOnAs` 账户和密码;
 
 ### 服务卸载
 
@@ -199,7 +198,7 @@ const svc = new Service({
 ### 服务实现原理
 
 使用 [winsw]为每个服务生成独立的 `.exe` 和 `.xml` 配置文件,存储在脚本所在目录的 `daemon` 子文件夹中;服务日志可通过 Windows 事件查看器查看;
-
+此外,服务启动时会自动设置 `USERPROFILE` 环境变量为安装服务时当前用户的用户目录,保证路径相关 API 的行为与预期一致;
 ---
 
 # 事件日志系统
@@ -342,7 +341,7 @@ kill(进程PID, () => {
 
 3. **回调函数未执行**：确保正确传递回调函数,如果不需要回调,可以不传但无法获取执行结果
 
-4. **sudo 函数需要在系统中启用sudo命令**：如果是创建服务实例,还需设置 sudo.enabled为true
+4. **sudo 函数需要在系统中设置并启用sudo**
 
 ## 服务管理常见问题
 

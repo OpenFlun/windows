@@ -2,7 +2,7 @@ import { elevate, sudo, isAdminUser, platform } from './lib/binaries.js';
 import { kill, list } from './lib/cmd.js';
 import { Service } from './lib/daemon.js';
 import { EventLogger } from './lib/eventlog.js';
-import { exec, execSync, fork, promisify, path, fs, EventEmitter, isPermissionError, getDirname } from './lib/shared.js';
+import { exec, execSync, fork, promisify, execPromise, path, fs, EventEmitter, isPermissionError, getDirname } from './lib/shared.js';
 import { generateXml, createExe } from './lib/winsw.js';
 
 // =================================== lib/binaries.js ===================================
@@ -70,11 +70,12 @@ declare module './lib/eventlog.js' {
  * path, fs;             // Node.js内置模块,提供文件路径处理、文件系统操作等功能
  * class EventEmitter{}; // Node.js内置模块,提供事件驱动编程的功能,允许对象之间进行事件通信
  * // 自定义函数:
+ * execPromise();        // 基于exec函数的Promise版本,用于执行命令并以Promise方式获取结果
  * isPermissionError();  // 检查错误对象是否表示权限错误的函数,用于判断操作失败是否由于权限不足引起
  * getDirname();         // 获取当前模块目录路径的函数,用于在ES模块环境中替代__dirname变量的功能
  * ```
  * >查看定义:@see {@link exec}、{@link execSync}、{@link fork}、{@link promisify}、{@link path}、{@link fs}、{@link EventEmitter}
- * - 自定义函数:{@link isPermissionError}、{@link getDirname}
+ * - 自定义函数:{@link execPromise}、{@link isPermissionError}、{@link getDirname}
  */
 declare module './lib/shared.js' {
     export * from './lib/shared.js';
