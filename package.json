@@ -52,7 +52,5 @@
     "url": "https://github.com/OpenFlun/windows/issues"
   },
   "license": "ISC",
-  "scripts": {
-    "postinstall": "node copy-files.js 2>&1"
-  }
+  "scripts": {}
 }
