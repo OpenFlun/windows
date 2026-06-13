@@ -2,9 +2,9 @@
 .vscode/
 .npmrc
 node_modules/
-*.ps1
 *.bat
 *.bak
 *.tgz
 *.tar.gz
+*.ps1
 package-lock.json
