@@ -1,0 +1,62 @@
+{
+  "name": "@flun/windows",
+  "version": "3.0.11",
+  "description": "支持 Windows 服务、事件日志、UAC 以及多种与操作系统交互的辅助方法",
+  "keywords": [
+    "windows",
+    "service",
+    "daemon",
+    "logging",
+    "event",
+    "event logging",
+    "elevate",
+    "sudo",
+    "task"
+  ],
+  "author": "flun <open@flun.top>",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "types": "index.d.ts",
+  "exports": {
+    ".": "./index.js"
+  },
+  "main": "index.js",
+  "bin": {
+    "windows": "bin/cli.js"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "index.d.ts",
+    "index.js",
+    "win-service.config.js",
+    "copy-files.js",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "preferGlobal": true,
+  "dependencies": {
+    "chalk": "^6.0.1",
+    "xml": "1.0.1",
+    "yargs": "^18.2.0"
+  },
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenFlun/windows.git"
+  },
+  "homepage": "https://github.com/OpenFlun/windows#readme",
+  "bugs": {
+    "url": "https://github.com/OpenFlun/windows/issues"
+  },
+  "license": "ISC",
+  "scripts": {
+    "postinstall": "node copy-files.js 2>&1"
+  }
+}
