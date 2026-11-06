@@ -27,14 +27,14 @@
     "windows": "bin/cli.js"
   },
   "files": [
-    "lib",
     "bin",
+    "lib",
+    "CHANGELOG.md",
+    "README.md",
+    "copy-files.js",
     "index.d.ts",
     "index.js",
     "win-service.config.js",
-    "copy-files.js",
-    "CHANGELOG.md",
-    "README.md",
     "LICENSE"
   ],
   "preferGlobal": true,
@@ -50,6 +50,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/OpenFlun/windows.git"
+  },
+  "gitee": {
+    "type": "git",
+    "url": "git+https://gitee.com/openflun/windows.git"
   },
   "homepage": "https://github.com/OpenFlun/windows#readme",
   "bugs": {

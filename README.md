@@ -33,8 +33,9 @@
 
 ```
 @flun/windows/
-├── index.js              库入口,导出 elevate / sudo / isAdminUser / kill / list / Service / EventLogger
-├── index.d.ts            类型声明
+├── bin/winsw/            winsw 可执行文件(内部资源,非命令)
+├── bin/cli.js            命令行入口
+├── bin/elevate.vbs       UAC 提权脚本(内部资源,非命令)
 ├── lib/binaries.js       外部二进制定位与提权调用
 ├── lib/cmd.js            进程列表与终止
 ├── lib/daemon.js         Windows 服务管理类
@@ -42,15 +43,14 @@
 ├── lib/winsw.js          winsw 配置生成
 ├── lib/wrapper.js        进程包装器
 ├── lib/shared.js         共享工具函数
-├── bin/winsw/            winsw 可执行文件(内部资源,非命令)
-├── bin/elevate.vbs       UAC 提权脚本(内部资源,非命令)
-├── bin/cli.js            命令行入口
-├── win-service.config.js 服务配置模板(全量字段,必填项带 *)
-├── copy-files.js         postinstall 复制二进制资源
-├── package.json          包配置
 ├── README.md             本文件
 ├── CHANGELOG.md          更新日志
-└── LICENSE               许可
+├── copy-files.js         postinstall 复制二进制资源
+├── index.js              库入口,导出 elevate / sudo / isAdminUser / kill / list / Service / EventLogger
+├── win-service.config.js 服务配置模板(全量字段,必填项带 *)
+├── index.d.ts            类型声明
+├── LICENSE               许可
+└── package.json          包配置
 ```
 
 ## 安装前准备
