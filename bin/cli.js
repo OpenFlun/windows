@@ -122,10 +122,10 @@ const [, , sub, ...args] = process.argv,
    * 输出用法;
    */
   printHelp = () => {
-    const cmd = (name, desc) => `    ${chalk.cyanBright(name.padEnd(26))}${chalk.gray(desc)}`;
+    const cmd = (name, desc) => `      ${chalk.cyanBright(name.padEnd(26))}${chalk.gray(desc)}`;
     console.log([
-      `${chalk.blueBright('用法:')} windows <命令> [--键 值]`, '',
-      `  ${chalk.cyan('服务类')} ${chalk.gray('(默认读当前目录 win-service.config.js,--键 值 覆盖)')}`,
+      `  ${chalk.blueBright('用法:')} windows <命令> [--键 值]`, '',
+      `    ${chalk.cyan('服务类')} ${chalk.gray('(默认读当前目录 win-service.config.js,--键 值 覆盖)')}`,
       cmd('install', '安装服务,装完默认启动;--no-start 关闭自动启动'),
       cmd('uninstall', '卸载服务'),
       cmd('start', '启动服务'),
@@ -134,7 +134,7 @@ const [, , sub, ...args] = process.argv,
       cmd('status', '查询状态,输出 0 不存在 1 有服务无文件 2 有文件无服务 3 完整'),
       cmd('xml', '输出 winsw 配置 XML'),
       cmd('exe', '生成 winsw 可执行文件;--dir 指定输出目录,默认脚本目录下 daemon'), '',
-      `  ${chalk.cyan('其它')}`,
+      `    ${chalk.cyan('其它')}`,
       cmd('example', '生成 win-service.config.js 模板到当前项目'),
       cmd('list', '列出运行中的进程;--verbose 显示详细信息'),
       cmd('kill', '结束进程,参数为进程 PID;例如 kill 1234,--force 强制结束'),
